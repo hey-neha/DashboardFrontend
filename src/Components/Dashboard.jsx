@@ -16,13 +16,23 @@ import Employee from "./Employee";
 import { TbClick } from "react-icons/tb";
 import { IoMdPeople } from "react-icons/io";
 import { GoProjectRoadmap } from "react-icons/go";
+import { CiDatabase } from "react-icons/ci";
 
 const Dashboard = () => {
-  const [isTrue, setIsTrue] = useState(true);
-  const [show, setShow] = useState(false);
+  const [isTrue, setIsTrue] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
+  const [isProfile, setIsProfile] = useState(false);
+
+  const ToggleFun = () => {
+    setIsToggled(!isToggled);
+  };
 
   const IsTrueFun = () => {
     setIsTrue(!isTrue);
+  };
+
+  const IsProfileFun = () => {
+    setIsProfile(!isProfile);
   };
 
   return (
@@ -50,13 +60,14 @@ const Dashboard = () => {
             </div>
           </div>
 
+          {/*   ------------------ */}
+
           {/* second */}
 
           <div>
             <div className="flex w-full flex-col text-black md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white rounded-xl">
               <div className=" bg-white  shadow-2xl text-black   p-2 rounded-xl">
                 <IoPeopleSharp
-                  onClick={() => setShow(true)}
                   className=" hover:text-green-600"
                   style={{ width: "20px", height: "20px" }}
                 />
@@ -65,21 +76,33 @@ const Dashboard = () => {
                 <span className="font-semibold mt-20">Staff</span>
               </div>
 
-              <div className="mt-4">
+              <div className="mt-3">
                 <MdOutlineArrowForwardIos
+                  onClick={ToggleFun}
                   style={{ width: "12px", marginLeft: "110px" }}
                 />
               </div>
             </div>
-            {show ? (
-              <div>
-                <p>Employee</p>
-                <p>Client</p>
+
+            {isToggled ? (
+              <div className="flex flex-col gap-5 ml-16 ">
+                <span className="flex gap-5 hover:text-green-600">
+                  {" "}
+                  <p className=" w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+                  <p className="">Employee</p>
+                </span>
+
+                <span className="   flex gap-5   hover:text-green-600">
+                  <p className=" w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+                  <p className="">Client</p>
+                </span>
               </div>
             ) : (
               " "
             )}
           </div>
+
+          {/*    ---------------- */}
 
           {/* third */}
 
@@ -93,7 +116,7 @@ const Dashboard = () => {
 
             <div className="mt-4">
               <MdOutlineArrowForwardIos
-                style={{ width: "12px", marginLeft: "130px" }}
+                style={{ width: "12px", marginLeft: "120px" }}
               />
             </div>
           </div>
@@ -110,7 +133,24 @@ const Dashboard = () => {
 
             <div className="mt-2">
               <MdOutlineArrowForwardIos
-                style={{ width: "12px", marginLeft: "60px" }}
+                style={{ width: "12px", marginLeft: "50px" }}
+              />
+            </div>
+          </div>
+
+          {/*  ---------- */}
+
+          <div className="flex w-full flex-col md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white  rounded-xl">
+            <div className="bg-white shadow-2xl text-black p-1 hover:text-green-600 rounded-xl">
+              <CiDatabase style={{ width: "30px", height: "30px" }} />
+            </div>
+            <div>
+              <span className="font-semibold  mt-12">Data</span>
+            </div>
+
+            <div className="mt-2">
+              <MdOutlineArrowForwardIos
+                style={{ width: "12px", marginLeft: "100px" }}
               />
             </div>
           </div>
@@ -121,21 +161,21 @@ const Dashboard = () => {
         <div className="w-full ">
           {/*   ------------------ left and right-------- */}
 
-          <div className="flex justify-between  p-3 ">
+          <div className="flex justify-between  p-3 relative ">
             {/*    drop-down profile ------------------------- */}
 
             <div>
-              <div className=" flex gap-2 w-[150px]  shadow-sm hover:bg-gray-100 rounded-2xl  ml-16  p-3">
+              <div className=" flex gap-2 w-[150px]  shadow-sm hover:bg-gray-100 rounded-2xl    p-3">
                 <CgProfile style={{ width: "30px", height: "30px" }} />
                 <h1 className="text-[18px]">Vereda</h1>
                 <RiArrowRightWideFill
-                  onClick={() => setIsTrue(true)}
+                  onClick={IsProfileFun}
                   style={{ marginTop: "5px" }}
                 />
               </div>
 
-              {isTrue ? (
-                <div className="bg-white p-8 w-[210px] shadow-2xl my-5 rounded-2xl relative z-10 ">
+              {isProfile ? (
+                <div className="bg-white p-8 w-[210px] absolute z-10 shadow-2xl my-5 rounded-2xl  ">
                   <div className="flex justify-center gap-5  hover:bg-gray-200 mr-7">
                     <CgProfile style={{ width: "20px", height: "20px" }} />
                     <p>Profile</p>
@@ -165,33 +205,35 @@ const Dashboard = () => {
                 />
               </div>
 
-              <div className="bg-white w-[210px] text-start shadow-2xl my-5 rounded-2xl relative  ">
+              <div className="mr-52">
                 {isTrue ? (
-                  <div className="flex justify-center flex-col w-full gap-2  mt-8">
-                    <p className="hover:bg-gray-200 w-full p-2 ">English</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Spanish</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Portuguese</p>
-                    <p className="hover:bg-gray-200 w-full p-2">
-                      Mandarin Chinese
-                    </p>
-                    <p className="hover:bg-gray-200 w-full p-2">Hindi</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Russian</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Japanese</p>
-                    <p className="hover:bg-gray-200 w-full p-2">German</p>
-                    <p className="hover:bg-gray-200 w-full p-2">French</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Italian</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Korean</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Turkish</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Arabic</p>
-                    <p className="hover:bg-gray-200 w-full p-2">
-                      Persian (Farsi)
-                    </p>
-                    <p className="hover:bg-gray-200 w-full p-2">Yoruba</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Xhosa</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Zulu</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Igbo</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Bengali</p>
-                    <p className="hover:bg-gray-200 w-full p-2">Vietnamese</p>
+                  <div className="bg-white  text-start w-[200px] absolute z-10 shadow-2xl my-5 rounded-2xl   ">
+                    <div className="flex justify-center flex-col w-full gap-2  mt-8">
+                      <p className="hover:bg-gray-200 w-full p-2 ">English</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Spanish</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Portuguese</p>
+                      <p className="hover:bg-gray-200 w-full p-2">
+                        Mandarin Chinese
+                      </p>
+                      <p className="hover:bg-gray-200 w-full p-2">Hindi</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Russian</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Japanese</p>
+                      <p className="hover:bg-gray-200 w-full p-2">German</p>
+                      <p className="hover:bg-gray-200 w-full p-2">French</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Italian</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Korean</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Turkish</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Arabic</p>
+                      <p className="hover:bg-gray-200 w-full p-2">
+                        Persian (Farsi)
+                      </p>
+                      <p className="hover:bg-gray-200 w-full p-2">Yoruba</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Xhosa</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Zulu</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Igbo</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Bengali</p>
+                      <p className="hover:bg-gray-200 w-full p-2">Vietnamese</p>
+                    </div>
                   </div>
                 ) : (
                   ""
@@ -202,11 +244,11 @@ const Dashboard = () => {
 
           {/* employee and dashbaord and 3 card using flex */}
 
-          <div className="ml-20">
-            <h1 className="font-semibold text-2xl mt-2">Dashboard</h1>
+          <div className="ml-5">
+            <h1 className="font-semibold text-2xl mt-6">Dashboard</h1>
 
             {/*         three component--------------------------- */}
-            <div className="flex justify-between flex-col md:flex-row gap-3">
+            <div className="flex justify-between  flex-col  md:flex-row gap-3">
               <div className="flex justify-between mt-12 p-7 w-1/3 rounded-lg shadow-lg">
                 <div className="flex justify-between gap-6">
                   <div className="bg-orange-300 rounded-2xl p-2 ">
