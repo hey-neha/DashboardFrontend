@@ -1,32 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { GoPeople } from "react-icons/go";
+import { FaFileCsv } from "react-icons/fa";
+// import { IoIosAdd } from "react-icons/io";
 import { CiHome } from "react-icons/ci";
 import { IoPeopleSharp } from "react-icons/io5";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { FaHandPaper } from "react-icons/fa";
 import { IoCameraReverse } from "react-icons/io5";
-import { GoPeople } from "react-icons/go";
-import { FaFileCsv } from "react-icons/fa";
+// import { FaFileCsv } from "react-icons/fa";
 import { IoIosAdd } from "react-icons/io";
 import Card from "./Card";
 import { CgProfile } from "react-icons/cg";
 import { RiArrowRightWideFill } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 import { TbWorld } from "react-icons/tb";
-import Employee from "./Employee";
 import { TbClick } from "react-icons/tb";
 import { IoMdPeople } from "react-icons/io";
 import { GoProjectRoadmap } from "react-icons/go";
+import { useState } from "react";
 
-const Dashboard = () => {
-  const [isTrue, setIsTrue] = useState(true);
-  const [show, setShow] = useState(false);
-
-  const IsTrueFun = () => {
-    setIsTrue(!isTrue);
-  };
+const Employee = () => {
+  const [isTrue, setIsTrue] = useState(false);
 
   return (
     <>
+      {/*  ---------------- */}
+
       <div className="w-fulll h-auto md:h-screen p-3  bg-gray-10 flex">
         {/* left side------------------------------ */}
 
@@ -41,77 +40,60 @@ const Dashboard = () => {
           </div>
           {/*  first component start from here ------------------------------- */}
 
-          <div className="flex w-full flex-col md:flex-row gap-3 mt-8 p-2 hover:bg-green-600 text-black rounded-xl hover:text-white">
-            <div className="  bg-white shadow-white p-2 text-black  hover:text-green-500 rounded-xl">
-              <CiHome style={{ width: "20px", height: "20px" }} />
+          <div className="flex w-full flex-col md:flex-row gap-3 mt-8 p-2 bg-green-600 text-white rounded-xl">
+            <div className="bg-white p-2 text-green-600 rounded-xl">
+              <CiHome style={{ width: "30px", height: "30px" }} />
             </div>
-            <div className="">
-              <span className="font-semibold  mt-16">Dashboard</span>
+            <div>
+              <span className="font-semibold  mt-12">Dashboard</span>
             </div>
           </div>
 
           {/* second */}
 
-          <div>
-            <div className="flex w-full flex-col text-black md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white rounded-xl">
-              <div className=" bg-white  shadow-2xl text-black   p-2 rounded-xl">
-                <IoPeopleSharp
-                  onClick={() => setShow(true)}
-                  className=" hover:text-green-600"
-                  style={{ width: "20px", height: "20px" }}
-                />
-              </div>
-              <div>
-                <span className="font-semibold mt-20">Staff</span>
-              </div>
-
-              <div className="mt-4">
-                <MdOutlineArrowForwardIos
-                  style={{ width: "12px", marginLeft: "110px" }}
-                />
-              </div>
+          <div className="flex w-full flex-col text-black md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white rounded-xl">
+            <div className=" bg-white  shadow-2xl text-black   p-2 rounded-xl">
+              <IoPeopleSharp
+                className=" hover:text-green-600"
+                style={{ width: "30px", height: "30px" }}
+              />
             </div>
-            {show ? (
-              <div>
-                <p>Employee</p>
-                <p>Client</p>
-              </div>
-            ) : (
-              " "
-            )}
+            <div>
+              <span className="font-semibold mt-20">Staff</span>
+            </div>
+
+            <div className="mt-4">
+              <MdOutlineArrowForwardIos style={{ marginLeft: "110px" }} />
+            </div>
           </div>
 
           {/* third */}
 
           <div className="flex w-full flex-col md:flex-row gap-3 my-3 p-2 hover:bg-green-600 text-black hover:text-white rounded-xl">
             <div className="bg-white shadow-2xl text-black p-2 hover:text-green-600 rounded-xl">
-              <FaHandPaper style={{ width: "20px", height: "20px" }} />
+              <FaHandPaper style={{ width: "30px", height: "30px" }} />
             </div>
             <div>
               <span className="font-semibold  mt-12">Hr</span>
             </div>
 
             <div className="mt-4">
-              <MdOutlineArrowForwardIos
-                style={{ width: "12px", marginLeft: "130px" }}
-              />
+              <MdOutlineArrowForwardIos style={{ marginLeft: "120px" }} />
             </div>
           </div>
 
           {/* fourth */}
 
           <div className="flex w-full flex-col md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white  rounded-xl">
-            <div className="bg-white shadow-2xl text-black p-1 hover:text-green-600 rounded-xl">
-              <IoCameraReverse style={{ width: "20px", height: "20px" }} />
+            <div className="bg-white shadow-2xl text-black  p-2 hover:text-green-600 rounded-xl">
+              <IoCameraReverse style={{ width: "30px", height: "30px" }} />
             </div>
             <div>
               <span className="font-semibold  mt-12">Zoom meting</span>
             </div>
 
-            <div className="mt-2">
-              <MdOutlineArrowForwardIos
-                style={{ width: "12px", marginLeft: "60px" }}
-              />
+            <div className="mt-4">
+              <MdOutlineArrowForwardIos style={{ marginLeft: "60px" }} />
             </div>
           </div>
         </div>
@@ -159,8 +141,9 @@ const Dashboard = () => {
                   style={{ marginTop: "5px", width: "20px", height: "20px" }}
                 />
                 <h2>English</h2>
+
                 <RiArrowRightWideFill
-                  onClick={IsTrueFun}
+                  onClick={() => setIsTrue(true)}
                   style={{ marginTop: "5px", width: "20px", height: "20px" }}
                 />
               </div>
@@ -202,72 +185,45 @@ const Dashboard = () => {
 
           {/* employee and dashbaord and 3 card using flex */}
 
-          <div className="ml-20">
-            <h1 className="font-semibold text-2xl mt-2">Dashboard</h1>
-
+          <div className="">
             {/*         three component--------------------------- */}
-            <div className="flex justify-between flex-col md:flex-row gap-3">
-              <div className="flex justify-between mt-12 p-7 w-1/3 rounded-lg shadow-lg">
-                <div className="flex justify-between gap-6">
-                  <div className="bg-orange-300 rounded-2xl p-2 ">
-                    <TbClick
-                      style={{
-                        color: "white",
-                        marginTop: "3px",
-                        width: "30px",
-                        height: "30px",
-                      }}
-                    />
-                  </div>
-                  <span>
-                    <p className="text-sm ">Total</p>
-                    <h1 className="font-semibold text-xl">Clients</h1>
-                  </span>
-                </div>
 
-                <h1 className="font-semibold text-xl">1</h1>
+            <div className="flex justify-between mx-16 ">
+              <div className="mt-3 ml-5">
+                <h1 className="text-2xl">Employee</h1>
+
+                <div className="flex justify-between mt-3 gap-3">
+                  <p className="text-green-500">Dashboard</p>
+                  <MdOutlineArrowForwardIos style={{ marginTop: "6px" }} />
+                  <p>Employee</p>
+                </div>
               </div>
+              {/*      three card --------------------------*/}
 
-              <div className="flex justify-between mt-12 p-7 w-1/3 rounded-lg shadow-lg">
-                <div className="flex justify-between gap-6">
-                  <div className="bg-green-300 p-2 rounded-2xl">
-                    <IoMdPeople
-                      style={{
-                        color: "white",
-                        marginTop: "6px",
-                        width: "30px",
-                        height: "30px",
-                      }}
-                    />
-                  </div>
-                  <span>
-                    <p className="text-sm ">Total</p>
-                    <h1 className="font-semibold text-xl">Employees</h1>
-                  </span>
+              <div className="flex justify-center gap-1 h-10">
+                <div className="p-3 text-white bg-green-600  rounded-lg">
+                  <GoPeople style={{ width: "20px ", height: "20px" }} />
+                </div>
+                <div className="p-3 text-white bg-green-600  rounded-lg">
+                  <FaFileCsv style={{ width: "20px ", height: "20px" }} />
                 </div>
 
-                <h1 className="font-semibold text-xl">2</h1>
+                <div className="p-3 text-white bg-green-600  rounded-lg">
+                  <IoIosAdd style={{ width: "20px ", height: "20px" }} />
+                </div>
               </div>
+            </div>
 
-              <div className="flex justify-between mt-12 p-7 w-1/3 rounded-lg shadow-lg">
-                <div className="flex justify-between gap-6">
-                  <div className="bg-pink-600 p-2 rounded-2xl">
-                    <GoProjectRoadmap
-                      style={{
-                        marginTop: "6px",
-                        width: "30px",
-                        height: "30px",
-                      }}
-                    />
-                  </div>
-
-                  <span>
-                    <p className="text-sm ">Total</p>
-                    <h1 className="font-semibold text-xl">Projects</h1>
-                  </span>
-                </div>
-
-                <h1 className="font-semibold text-xl">3</h1>
+            <div className="mt-10">
+              {/*      boxes --- card---------- */}
+              <div className=" mx-20  border text-center rounded-lg h-auto  p-5 w-1/4">
+                <button className="text-white p-2 rounded-2xl  bg-green-600">
+                  <spna className="font-bold text-3xl">+</spna>
+                </button>
+                <h1 className=" font-semibold mt-4 "> new Employee</h1>
+                <p className="mt-3 text-gray-500">
+                  Click here to add new employee
+                </p>
               </div>
             </div>
           </div>
@@ -285,4 +241,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Employee;
