@@ -17,11 +17,17 @@ import { TbClick } from "react-icons/tb";
 import { IoMdPeople } from "react-icons/io";
 import { GoProjectRoadmap } from "react-icons/go";
 import { CiDatabase } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [isTrue, setIsTrue] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
+  const [isData, setIsData] = useState(false);
+
+  const DataFun = () => {
+    setIsData(!isData);
+  };
 
   const ToggleFun = () => {
     setIsToggled(!isToggled);
@@ -114,7 +120,7 @@ const Dashboard = () => {
               <span className="font-semibold  mt-12">Hr</span>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-2">
               <MdOutlineArrowForwardIos
                 style={{ width: "12px", marginLeft: "120px" }}
               />
@@ -140,19 +146,41 @@ const Dashboard = () => {
 
           {/*  ---------- */}
 
-          <div className="flex w-full flex-col md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white  rounded-xl">
-            <div className="bg-white shadow-2xl text-black p-1 hover:text-green-600 rounded-xl">
-              <CiDatabase style={{ width: "30px", height: "30px" }} />
-            </div>
-            <div>
-              <span className="font-semibold  mt-12">Data</span>
+          <div>
+            <div className="flex w-full flex-col md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white  rounded-xl">
+              <div className="bg-white shadow-2xl text-black p-1 hover:text-green-600 rounded-xl">
+                <CiDatabase style={{ width: "30px", height: "30px" }} />
+              </div>
+              <div>
+                <span className="font-semibold  mt-12">ClientData</span>
+              </div>
+
+              <div className="mt-2">
+                <MdOutlineArrowForwardIos
+                  onClick={DataFun}
+                  style={{ width: "12px", marginLeft: "60px" }}
+                />
+              </div>
             </div>
 
-            <div className="mt-2">
-              <MdOutlineArrowForwardIos
-                style={{ width: "12px", marginLeft: "100px" }}
-              />
-            </div>
+            {isData ? (
+              <div className="flex flex-col gap-5 ml-16 relative z-10 ">
+                <span className="flex gap-5 hover:text-green-600">
+                  {" "}
+                  <p className=" w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+                  {/*        link add------------------------- */}
+                  <p className="">Add</p>
+                </span>
+
+                <span className="   flex gap-5   hover:text-green-600">
+                  <p className=" w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+
+                  <p className="">View</p>
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 
@@ -175,7 +203,7 @@ const Dashboard = () => {
               </div>
 
               {isProfile ? (
-                <div className="bg-white p-8 w-[210px] absolute z-10 shadow-2xl my-5 rounded-2xl  ">
+                <div className="bg-white p-8 w-[210px] absolute z-50 shadow-2xl my-5 rounded-2xl  ">
                   <div className="flex justify-center gap-5  hover:bg-gray-200 mr-7">
                     <CgProfile style={{ width: "20px", height: "20px" }} />
                     <p>Profile</p>
@@ -207,7 +235,7 @@ const Dashboard = () => {
 
               <div className="mr-52">
                 {isTrue ? (
-                  <div className="bg-white  text-start w-[200px] absolute z-10 shadow-2xl my-5 rounded-2xl   ">
+                  <div className="bg-white  text-start w-[200px] absolute z-50 shadow-2xl my-5 rounded-2xl   ">
                     <div className="flex justify-center flex-col w-full gap-2  mt-8">
                       <p className="hover:bg-gray-200 w-full p-2 ">English</p>
                       <p className="hover:bg-gray-200 w-full p-2">Spanish</p>

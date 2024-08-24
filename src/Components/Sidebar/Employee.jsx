@@ -19,6 +19,7 @@ import { GoProjectRoadmap } from "react-icons/go";
 import { RxCross1 } from "react-icons/rx";
 import { useState } from "react";
 import Card from "./Card";
+import { CiDatabase } from "react-icons/ci";
 
 const Employee = () => {
   const [isTrue, setIsTrue] = useState(false);
@@ -59,6 +60,7 @@ const Employee = () => {
             />
           </div>
           {/*  first component start from here ------------------------------- */}
+
           <div className="flex w-full flex-col md:flex-row gap-3 mt-8 p-2 hover:bg-green-600 text-black rounded-xl hover:text-white">
             <div className="bg-white shadow-white p-2 text-black hover:text-green-500 rounded-xl">
               <CiHome style={{ width: "20px", height: "20px" }} />
@@ -67,6 +69,7 @@ const Employee = () => {
               <span className="font-semibold mt-16">Dashboard</span>
             </div>
           </div>
+
           {/* second */}
           <div>
             <div className="flex w-full flex-col text-black md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white rounded-xl">
@@ -128,6 +131,42 @@ const Employee = () => {
                 style={{ width: "12px", marginLeft: "60px" }}
               />
             </div>
+          </div>
+          {/* 
+          ----------------- */}
+
+          <div>
+            <div className="flex w-full flex-col text-black md:flex-row gap-3 my-3 p-2 hover:bg-green-600 hover:text-white rounded-xl">
+              <div className="bg-white shadow-2xl text-black p-2 rounded-xl">
+                <IoPeopleSharp
+                  className="hover:text-green-600"
+                  style={{ width: "20px", height: "20px" }}
+                />
+              </div>
+              <div>
+                <span className="font-semibold mt-20">ClientData</span>
+              </div>
+              <div className="mt-3">
+                <MdOutlineArrowForwardIos
+                  onClick={ToggleFun}
+                  style={{ width: "12px", marginLeft: "110px" }}
+                />
+              </div>
+            </div>
+            {isToggled ? (
+              <div className="flex flex-col gap-5 ml-16">
+                <span className="flex gap-5 hover:text-green-600">
+                  <p className="w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+                  <p>Add</p>
+                </span>
+                <span className="flex gap-5 hover:text-green-600">
+                  <p className="w-[5px] h-[5px] bg-green-400 rounded-full mt-3"></p>
+                  <p>View</p>
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 
@@ -223,9 +262,7 @@ const Employee = () => {
                 </div>
                 {/* card components start from here---------------------------------------------- */}
 
-                <div>
-                  <Card />
-                </div>
+                <div>{isCard ? <Card /> : ""}</div>
 
                 {/* three card */}
                 <div className="flex justify-center gap-1 h-10 mr-16">
@@ -237,8 +274,8 @@ const Employee = () => {
                   </div>
                   <div className="p-3 text-white bg-green-600 rounded-lg">
                     <IoIosAdd
-                      style={{ width: "20px", height: "20px" }}
                       onClick={isCardFun}
+                      style={{ width: "20px", height: "20px" }}
                     />
                   </div>
                 </div>
